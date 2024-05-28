@@ -2,13 +2,14 @@
 import * as React from "react";
 import Stack from "@mui/material/Stack";
 import Button from "@mui/material/Button";
-import Header from "./component/Header";
+import InputBox from "./component/Input";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
+import "./page.css";
 
 const HomePage = () => {
   const router = useRouter();
-  
+
   useEffect(() => {
     const auth = localStorage.getItem("LoggedIn");
 
@@ -16,7 +17,6 @@ const HomePage = () => {
       router.push("/");
     }
   }, [router]);
-  
 
   const handleOnSignOut = (event) => {
     localStorage.removeItem("LoggedIn");
@@ -24,12 +24,14 @@ const HomePage = () => {
   };
   return (
     <>
-      <Header />
       <Stack spacing={2} direction="row">
         <Button onClick={handleOnSignOut} type="button" variant="outlined">
           Sign Out
         </Button>
       </Stack>
+      <div className="wrapper">
+        <InputBox />
+      </div>
     </>
   );
 };
