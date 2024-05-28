@@ -1,8 +1,7 @@
 "use client";
 import * as React from "react";
-import Stack from "@mui/material/Stack";
-import Button from "@mui/material/Button";
 import InputBox from "./component/Input";
+import SignOutButton from "./component/SignoutButton";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
 import "./page.css";
@@ -18,21 +17,15 @@ const HomePage = () => {
     }
   }, [router]);
 
-  const handleOnSignOut = (event) => {
-    localStorage.removeItem("LoggedIn");
-    router.push("/");
-  };
   return (
-    <>
-      <Stack spacing={2} direction="row">
-        <Button onClick={handleOnSignOut} type="button" variant="outlined">
-          Sign Out
-        </Button>
-      </Stack>
+    <center>
+      <h2>ToDo App</h2>
+      
       <div className="wrapper">
         <InputBox />
       </div>
-    </>
+      <SignOutButton />
+    </center>
   );
 };
 

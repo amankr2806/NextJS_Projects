@@ -1,8 +1,8 @@
 import * as React from "react";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
-import Stack from '@mui/material/Stack';
-import Button from '@mui/material/Button';
+import Stack from "@mui/material/Stack";
+import Button from "@mui/material/Button";
 
 export default function InputBox() {
   return (
@@ -15,7 +15,7 @@ export default function InputBox() {
         noValidate
         autoComplete="off"
       >
-        <TextField id="outlined-basic" label="Thougts" variant="outlined" />
+        <TextField className="inputField"  id="outlined-basic" label="Thougts" variant="outlined" />
       </Box>
 
       <Stack direction="row" spacing={2}>
