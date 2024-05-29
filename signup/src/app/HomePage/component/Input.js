@@ -4,7 +4,9 @@ import TextField from "@mui/material/TextField";
 import Stack from "@mui/material/Stack";
 import Button from "@mui/material/Button";
 
+
 export default function InputBox() {
+
   return (
     <>
       <Box
@@ -15,7 +17,7 @@ export default function InputBox() {
         noValidate
         autoComplete="off"
       >
-        <TextField className="inputField"  id="outlined-basic" label="Thougts" variant="outlined" />
+        <TextField className="inputField"  id="outlined-basic" label="New Task" variant="outlined" />
       </Box>
 
       <Stack direction="row" spacing={2}>

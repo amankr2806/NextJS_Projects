@@ -1,22 +1,48 @@
-.wrapper{
+/* .wrapper{
     display: flex;
     justify-content: center;
     align-items: center;
-}
+    flex-direction: column;
+} */
+
 
 .addButton{
     padding: 15px;
 }
 
-.iputField{
-    width: 400px
-}
-
 .signout{
     display: flex;
-    margin: 10px;
 }
 
 h2{
-    margin: 10px;
+    margin: 20px;
 }
+
+.addTask{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.list1{
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    
+}
+
+.list2{
+    margin: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;  
+  
+}
+
+.button{
+    margin-left: 10px;
+}
+
