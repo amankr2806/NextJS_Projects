@@ -11,7 +11,7 @@ const HomePage = () => {
   const router = useRouter();
 
   const [task, setTask] = useState([]);
-  
+
   const url = "https://dummyjson.com/todos";
 
   useEffect(() => {
@@ -23,23 +23,33 @@ const HomePage = () => {
 
   useEffect(() => {
     const getTask = async () => {
-      const res = await axios.get(url);
-      const data = res.data;
-      const list = data.todos;
-      setTask(list);
+      try {
+        const res = await axios.get(url);
+        const data = res.data;
+        const list = data.todos;
+        setTask(list);
+      } catch (error) {
+        console.error("Error adding data:", error);
+      }
     };
     getTask();
   }, []);
 
+  const addTaskList = (newList) => {
+    setTask((task) => [newList, ...task])
+  } 
+
   return (
     <>
-      <center><h2>ToDo App</h2></center>
+      <center>
+        <h2>ToDo App</h2>
+      </center>
       <div className="addTask">
-        <InputBox />
+        <InputBox newData={addTaskList} />
       </div>
-      <TodoList list = {task} />
+      <TodoList list={task} />
       <div className="list1">
-      <SignOutButton />
+        <SignOutButton />
       </div>
     </>
   );

@@ -6,7 +6,7 @@ import Button from "@mui/material/Button";
 const TodoList = ({ list }) => {
   return (
     <>
-      {list.map((item) => (
+      {list.map(item=> (
         <div className="list2" key={item.id}>
           {item.todo}
           <div className="button">

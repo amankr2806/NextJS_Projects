@@ -35,10 +35,11 @@ h2{
 }
 
 .list2{
-    margin: 10px;
+    margin: 15px;
     display: flex;
     justify-content: center;
     align-items: center;  
+    width: 100%;
   
 }
 
