@@ -44,8 +44,8 @@ const HomePage = () => {
   return (
     <>
       <center>
-        <h2>ToDo App</h2>
-        <p>NOTE:- New task added cannot be Updated or deleted</p>
+        <h1>ToDo App</h1>
+        <p>NOTE:- New task Added cannot be Updated or Deleted</p>
       </center>
       <div className="addTask">
         <InputBox newData={addTaskList} />

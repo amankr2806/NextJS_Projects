@@ -14,7 +14,7 @@ export default function SignOutButton() {
   return (
     <>
       <Stack spacing={2} direction="row">
-        <Button onClick={handleOnSignOut} type="button" variant="outlined">
+        <Button className="addButton" onClick={handleOnSignOut} type="button" variant="contained">
           Sign Out
         </Button>
       </Stack>
