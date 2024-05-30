@@ -7,6 +7,8 @@ import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import "./page.css";
 import axios from "axios";
+
+
 const HomePage = () => {
   const router = useRouter();
 
@@ -43,11 +45,12 @@ const HomePage = () => {
     <>
       <center>
         <h2>ToDo App</h2>
+        <p>NOTE:- New task added cannot be Updated or deleted</p>
       </center>
       <div className="addTask">
         <InputBox newData={addTaskList} />
       </div>
-      <TodoList list={task} />
+      <TodoList list={task} setTask={setTask} />
       <div className="list1">
         <SignOutButton />
       </div>
