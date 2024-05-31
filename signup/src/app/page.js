@@ -36,10 +36,10 @@ export default function SignIn() {
     },
     validationSchema: SignInSchema,
     onSubmit: (values) => {
-
       const data = JSON.parse(localStorage.getItem(values.email));
       if (
-        data && values.email === data.email &&
+        data &&
+        values.email === data.email &&
         values.password === data.password
       ) {
         localStorage.setItem("LoggedIn", "true");
@@ -49,8 +49,6 @@ export default function SignIn() {
       }
     },
   });
-
-  
 
   return (
     <ThemeProvider theme={defaultTheme}>
