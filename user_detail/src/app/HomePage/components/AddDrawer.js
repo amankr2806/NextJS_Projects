@@ -53,8 +53,8 @@ export default function AddDrawer({ addUser, editUser, updateUser }) {
       age: "",
     },
     validationSchema: Yup.object({
-      firstName: Yup.string().required("First name is required"),
-      lastName: Yup.string().required("Last name is required"),
+      firstName: Yup.string().min(2, "minimum length should be 2").required("First name is required"),
+      lastName: Yup.string().min(2, "minimum length should be 2").required("Last name is required"),
       age: Yup.number()
         .required("Age is required")
         .positive("Age must be a positive number")
