@@ -31,7 +31,7 @@ export default function HomePage() {
   }, []);
 
   const addUser = (user) => {
-    setData((prevData) => [...prevData, user]);
+    setData((prevData) => [user, ...prevData]);
   };
 
   const updateUser = (updatedUser) => {
