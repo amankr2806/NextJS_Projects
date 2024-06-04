@@ -75,7 +75,7 @@ export default function DataTable({ data, setData, setEditUser }) {
         columns={columns}
         initialState={{
           pagination: {
-            paginationModel: { page: 0, pageSize: 5 },
+            paginationModel: { page: 1, pageSize: 5 },
           },
         }}
         pageSizeOptions={[5, 10]}
@@ -84,3 +84,4 @@ export default function DataTable({ data, setData, setEditUser }) {
     </div>
   );
 }
+
