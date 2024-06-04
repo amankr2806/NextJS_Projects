@@ -79,7 +79,7 @@ export default function DataTable({ data, setEditUser }) {
           },
         }}
         pageSizeOptions={[5, 10]}
-        checkboxSelection
+         //checkboxSelection
       />
     </div>
   );
