@@ -15,12 +15,12 @@ export default function HomePage() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await axios.get('https://dummyjson.com/users');
-        const users = res.data.users.map((user) => ({
+        const res = await axios.get('https://jsonplaceholder.typicode.com/users');
+        const users = res.data.map((user) => ({
           id: user.id,
-          firstName: user.firstName,
-          lastName: user.lastName,
-          age: user.age,
+          name: user.name,
+          username: user.username,
+          email: user.email,
         }));
         setData(users);
       } catch (error) {
@@ -51,7 +51,7 @@ export default function HomePage() {
     <div>
       <h1>This is Home Page</h1>
       <AddDrawer addUser={addUser} editUser={editUser} updateUser={updateUser} />
-      <DataTable data={data} setEditUser={setEditUser} />
+      <DataTable data={data} setData={setData} setEditUser={setEditUser} />
       <SignOutButton />
     </div>
   );

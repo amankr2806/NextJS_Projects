@@ -21,9 +21,9 @@ export default function AddDrawer({ addUser, editUser, updateUser }) {
     if (editUser) {
       setOpen(true);
       formik.setValues({
-        firstName: editUser.firstName,
-        lastName: editUser.lastName,
-        age: editUser.age,
+        name: editUser.name,
+        username: editUser.username,
+        email: editUser.email,
       });
     }
   }, [editUser]);
@@ -48,45 +48,43 @@ export default function AddDrawer({ addUser, editUser, updateUser }) {
 
   const formik = useFormik({
     initialValues: {
-      firstName: "",
-      lastName: "",
-      age: "",
+      name: "",
+      username: "",
+      email: "",
     },
     validationSchema: Yup.object({
-      firstName: Yup.string().min(2, "minimum length should be 2").required("First name is required"),
-      lastName: Yup.string().min(2, "minimum length should be 2").required("Last name is required"),
-      age: Yup.number()
-        .required("Age is required")
-        .positive("Age must be a positive number")
-        .integer("Age must be an integer"),
+      name: Yup.string().min(2, "minimum length should be 2").required("First name is required"),
+      username: Yup.string().min(2, "minimum length should be 2").required("Last name is required"),
+      email: Yup.string().email('Invalid email address').required("Please enter your email"),
     }),
     onSubmit: async (values, { resetForm }) => {
       try {
         if (editUser) {
-          const res = await axios.put(`http://dummyjson.com/users/${editUser.id}`, {
-            firstName: values.firstName,
-            lastName: values.lastName,
-            age: values.age,
+          const res = await axios.put(`http://jsonplaceholder.typicode.com/users/${editUser.id}`, {
+            name: values.name,
+            username: values.username,
+            email: values.email,
           });
           const updatedUser = res.data;
           updateUser({
             id: updatedUser.id,
-            firstName: updatedUser.firstName,
-            lastName: updatedUser.lastName,
-            age: updatedUser.age,
+            name: updatedUser.name,
+            username: updatedUser.username,
+            email: updatedUser.email,
           });
         } else {
-          const res = await axios.post('http://dummyjson.com/users/add', {
-            firstName: values.firstName,
-            lastName: values.lastName,
-            age: values.age,
+          const res = await axios.post('http://jsonplaceholder.typicode.com/users', {
+            name: values.name,
+            username: values.username,
+            email: values.email,
+            userid: 1,
           });
           const newUser = res.data;
           addUser({
             id: newUser.id,
-            firstName: newUser.firstName,
-            lastName: newUser.lastName,
-            age: newUser.age,
+            name: newUser.name,
+            username: newUser.username,
+            email: newUser.email,
           });
         }
       } catch (error) {
@@ -106,38 +104,37 @@ export default function AddDrawer({ addUser, editUser, updateUser }) {
         }}
       >
         <TextField
-          label="First Name"
-          name="firstName"
-          value={formik.values.firstName}
+          label="name"
+          name="name"
+          value={formik.values.name}
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
           fullWidth
           margin="normal"
-          error={formik.touched.firstName && Boolean(formik.errors.firstName)}
-          helperText={formik.touched.firstName && formik.errors.firstName}
+          error={formik.touched.name && Boolean(formik.errors.name)}
+          helperText={formik.touched.name && formik.errors.name}
         />
         <TextField
-          label="Last Name"
-          name="lastName"
-          value={formik.values.lastName}
+          label="username"
+          name="username"
+          value={formik.values.username}
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
           fullWidth
           margin="normal"
-          error={formik.touched.lastName && Boolean(formik.errors.lastName)}
-          helperText={formik.touched.lastName && formik.errors.lastName}
+          error={formik.touched.username && Boolean(formik.errors.username)}
+          helperText={formik.touched.username && formik.errors.username}
         />
         <TextField
-          label="Age"
-          name="age"
-          type="number"
-          value={formik.values.age}
+          label="email"
+          name="email"
+          value={formik.values.email}
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
           fullWidth
           margin="normal"
-          error={formik.touched.age && Boolean(formik.errors.age)}
-          helperText={formik.touched.age && formik.errors.age}
+          error={formik.touched.email && Boolean(formik.errors.email)}
+          helperText={formik.touched.email && formik.errors.email}
         />
         <Button variant="contained" color="primary" type="submit" fullWidth>
           Submit

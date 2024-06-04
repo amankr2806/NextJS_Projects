@@ -4,16 +4,16 @@ import Button from "@mui/material/Button";
 import { DataGrid } from "@mui/x-data-grid";
 import axios from "axios";
 
-export default function DataTable({ data, setEditUser }) {
+export default function DataTable({ data, setData, setEditUser }) {
   const columns = [
     { field: "id", headerName: "ID", width: 70 },
-    { field: "firstName", headerName: "First name", width: 130 },
-    { field: "lastName", headerName: "Last name", width: 130 },
+    { field: "name", headerName: "name", width: 130 },
+    { field: "username", headerName: "username", width: 130 },
     {
-      field: "age",
-      headerName: "Age",
-      type: "number",
-      width: 90,
+      field: "email",
+      headerName: "email",
+      // type: "number",
+      width: 200,
     },
     {
       field: "edit",
@@ -49,7 +49,7 @@ export default function DataTable({ data, setEditUser }) {
 
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`http://dummyjson.com/users/${id}`);
+      await axios.delete(`http://jsonplaceholder.typicode.com/users/${id}`);
       setData((prevData) => prevData.filter((row) => row.id !== id));
       console.log("Deleted row with id:", id);
     } catch (error) {
