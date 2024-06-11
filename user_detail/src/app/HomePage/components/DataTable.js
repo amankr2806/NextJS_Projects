@@ -3,8 +3,11 @@ import * as React from "react";
 import Button from "@mui/material/Button";
 import { DataGrid } from "@mui/x-data-grid";
 import axios from "axios";
+import { useRouter } from "next/navigation";
 
 export default function DataTable({ data, setData, setEditUser }) {
+
+  const router = useRouter();
   const columns = [
     { field: "id", headerName: "ID", width: 70 },
     { field: "name", headerName: "name", width: 130 },
@@ -45,7 +48,30 @@ export default function DataTable({ data, setData, setEditUser }) {
         </Button>
       ),
     },
+    {
+      field: "view",
+      headerName: "View",
+      width: 100,
+      renderCell: (params) => (
+        <Button
+          variant="contained"
+          color="secondary"
+          size="small"
+          onClick={() => handleView(params.id)}
+        >
+          View
+        </Button>
+      ),
+    },
   ];
+
+  
+
+  const handleView = (id) => {
+    
+      router.push(`/HomePage/${id}`)
+  
+  }
 
   const handleDelete = async (id) => {
     try {
